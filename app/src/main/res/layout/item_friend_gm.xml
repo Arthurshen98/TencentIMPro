@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/slv_fgm"
+    android:layout_width="match_parent"
+    android:layout_height="50dp">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@color/white">
+        <ImageView
+            android:id="@+id/delete_group"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="10dp"
+            android:paddingTop="15dp"
+            android:paddingBottom="15dp"
+            android:src="@drawable/delete2"
+            android:visibility="gone"
+            />
+        <TextView
+            android:id="@+id/groupName"
+            android:layout_weight="10"
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:gravity="center_vertical"
+            android:layout_marginLeft="20dp"
+            android:layout_centerVertical="true"
+            android:text=" group name"
+            />
+        <TextView
+            android:id="@+id/tv_fgm_edit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="编辑"
+            android:layout_alignParentRight="true"
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp"
+            android:textColor="@color/text_gray2"
+            android:layout_centerVertical="true"
+            android:visibility="gone"
+            android:layout_marginRight="15dp"/>
+    </RelativeLayout>
+
+</RelativeLayout>

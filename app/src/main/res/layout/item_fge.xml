@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="50dp">
+    <ImageView
+        android:id="@+id/iv_fge_header"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:paddingTop="5dp"
+        android:paddingBottom="5dp"
+        android:src="@drawable/header"
+        android:layout_marginLeft="15dp"
+        android:layout_centerVertical="true"
+        />
+    <TextView
+        android:id="@+id/tv_fge_name"
+        android:layout_width="wrap_content"
+        android:layout_height="50dp"
+        android:gravity="center"
+        android:text="小米"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="65dp"
+        />
+</RelativeLayout>

@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal" android:layout_width="match_parent"
+    android:layout_height="80dp"
+    android:background="@color/white"
+    android:gravity="center">
+    <LinearLayout
+        android:id="@+id/btnNewFriend"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:orientation="vertical"
+        android:layout_weight="1">
+        <ImageView
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:src="@drawable/friend"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:textColor="@color/text_black_color"
+            android:textSize="14sp"
+            android:text="@string/new_friend" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/btnPublicGroup"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:orientation="vertical"
+        android:layout_weight="1">
+        <ImageView
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:src="@drawable/group"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/text_black_color"
+            android:layout_marginTop="8dp"
+            android:textSize="14sp"
+            android:text="@string/open_group" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/btnPrivateGroup"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:orientation="vertical"
+        android:layout_weight="1">
+        <ImageView
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:src="@mipmap/discussion"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/text_black_color"
+            android:layout_marginTop="8dp"
+            android:textSize="14sp"
+            android:text="@string/discuss_group" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/btnChatroom"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:orientation="vertical"
+        android:layout_weight="1">
+        <ImageView
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:src="@mipmap/chatroom"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/text_black_color"
+            android:layout_marginTop="8dp"
+            android:textSize="14sp"
+            android:text="@string/chatroom" />
+    </LinearLayout>
+
+</LinearLayout>
