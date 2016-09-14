@@ -87,7 +87,7 @@
         <activity android:name=".view.activity.ChatActivity" />
         <activity android:name=".view.activity.ImagePreviewActivity" />
         <activity android:name=".view.activity.ConversationActivity" />
-        <activity android:name=".view.activity.ConnectActivity" />
+        <activity android:name=".view.activity.ContactsActivity" />
         <activity android:name=".view.activity.SearchFriendActivity" />
         <activity android:name=".view.activity.FriendGroupManageActivity" />
         <activity android:name=".view.activity.FriendGroupEditActivity" />

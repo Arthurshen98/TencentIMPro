@@ -42,11 +42,11 @@ public class EditDialog extends Dialog {
         return editText;
     }
 
-    public View SetTextTitle() {
+    public View getTextTitle() {
         return title1;
     }
 
-    public View SetTextContent() {
+    public View getTextContent() {
         return title1;
     }
 

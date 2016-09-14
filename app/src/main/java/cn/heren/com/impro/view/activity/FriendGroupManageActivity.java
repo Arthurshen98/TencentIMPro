@@ -11,6 +11,7 @@ import android.widget.AdapterView;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.ScrollView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.tencent.TIMCallBack;
@@ -29,7 +30,9 @@ import cn.heren.com.impro.widget.EditDialog;
 import cn.heren.com.impro.widget.NewAlertDialog;
 import cn.heren.com.impro.widget.SwipeListView;
 import cn.heren.com.presentation.event.FriendshipEvent;
+import cn.heren.com.presentation.presenter.FriendGroupManagePresenter;
 import cn.heren.com.presentation.presenter.FriendshipManagerPresenter;
+import cn.heren.com.presentation.viewinterface.FriendGroupManageView;
 import cn.heren.com.ui.SwipeMenu;
 import cn.heren.com.ui.SwipeMenuCreator;
 import cn.heren.com.ui.SwipeMenuItem;
@@ -39,12 +42,14 @@ import cn.heren.com.ui.SwipeMenuListView;
 /**
  * 分组管理
  */
-public class FriendGroupManageActivity extends BaseActivity implements View.OnClickListener {
+public class FriendGroupManageActivity extends BaseActivity implements FriendGroupManageView, View.OnClickListener {
 
     private LinearLayout ll_mana_add_group;
     private EditText et_content;//创建分组的输入框
     private SwipeListView listView_fgm;
     private ScrollView sv_fgm;
+    private TextView editGroupTitle,editGourpContent;
+    private FriendGroupManagePresenter presenter;
 
     private FriendGroupManageAdapter adapter;
 
@@ -53,6 +58,7 @@ public class FriendGroupManageActivity extends BaseActivity implements View.OnCl
     private List<String> groups = new ArrayList<>();
     private int localWigth = 0;
     private int localHeigth = 0;
+    private String groupname;
     @Override
     protected void loadActivityLayout() {
         setContentView(R.layout.activity_friend_group_manage);
@@ -88,6 +94,8 @@ public class FriendGroupManageActivity extends BaseActivity implements View.OnCl
 
     @Override
     protected void processDatas() {
+        presenter = new FriendGroupManagePresenter(this);
+
         groups.addAll(FriendshipInfo.getInstance().getGroups());
         adapter = new FriendGroupManageAdapter(this,groups,FriendGroupManageActivity.this);
         listView_fgm.setAdapter(adapter);
@@ -100,16 +108,19 @@ public class FriendGroupManageActivity extends BaseActivity implements View.OnCl
     }
 
     /**
-     * 创建群
+     * 创建组
      */
     public void initEditDialog() {
         mEditDialog = new EditDialog(this);
+
         et_content = (EditText) mEditDialog.getEditText();
+        groupname = et_content.getText().toString().trim();
+
         mEditDialog.setOnPositiveListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                final String groupname = et_content.getText().toString().trim();
-                if (!TextUtils.isEmpty(groupname)) {
+                presenter.createFriendGroup(groupname);
+               /* if (!TextUtils.isEmpty(groupname)) {
                     FriendshipManagerPresenter.createFriendGroup(groupname, new TIMValueCallBack<List<TIMFriendResult>>() {
                         @Override
                         public void onError(int i, String s) {
@@ -140,7 +151,7 @@ public class FriendGroupManageActivity extends BaseActivity implements View.OnCl
                     });
                 }else {
                     Toast.makeText(FriendGroupManageActivity.this, getString(R.string.add_dialog_null), Toast.LENGTH_SHORT).show();
-                }
+                }*/
                 mEditDialog.dismiss();
             }
         });
@@ -171,7 +182,9 @@ public class FriendGroupManageActivity extends BaseActivity implements View.OnCl
         }).setPositiveButton("确定", new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                FriendshipManagerPresenter.delFriendGroup(groups.get(position), new TIMCallBack() {
+                presenter.delFriendGroup(groups, position);
+
+                /*FriendshipManagerPresenter.delFriendGroup(groups.get(position), new TIMCallBack() {
                     @Override
                     public void onError(int i, String s) {
                         Toast.makeText(FriendGroupManageActivity.this, getString(R.string.get_member_group), Toast.LENGTH_SHORT).show();
@@ -184,10 +197,9 @@ public class FriendGroupManageActivity extends BaseActivity implements View.OnCl
                         groups.remove(position);
                         adapter.notifyDataSetChanged();
                     }
-                });
+                });*/
             }
         }).setMsg("您确定删除该分组吗？").show();
-
     }
 
     /**
@@ -197,7 +209,8 @@ public class FriendGroupManageActivity extends BaseActivity implements View.OnCl
         editNameDialog = new EditDialog(this);
         et_content = (EditText) editNameDialog.getEditText();
         final String oldGroupName = groups.get(position);
-
+        editGroupTitle.setText(R.string.edit_group_dialog_title);
+        editGourpContent.setText(R.string.edit_group_dialog_content);
         et_content.setText(oldGroupName);
         editNameDialog.setOnPositiveListener(new View.OnClickListener() {
             @Override
@@ -369,5 +382,64 @@ public class FriendGroupManageActivity extends BaseActivity implements View.OnCl
     private int dp2px(int dp) {
         return (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, dp,
                 getResources().getDisplayMetrics());
+    }
+
+    /**
+     * 创建群成功
+     */
+    @Override
+    public void createFriendGroupError(int i) {
+        switch (i){
+            case 32218:
+                //分组名称已存在
+                Toast.makeText(FriendGroupManageActivity.this, getString(R.string.add_group_error_existed), Toast.LENGTH_SHORT).show();
+                break;
+            case 32214:
+                //分组达到上限
+                Toast.makeText(FriendGroupManageActivity.this, getString(R.string.add_group_error_limit), Toast.LENGTH_SHORT).show();
+                break;
+            default:
+                Toast.makeText(FriendGroupManageActivity.this, getString(R.string.add_group_error), Toast.LENGTH_SHORT).show();
+                break;
+        }
+    }
+
+    /**
+     * 创建群失败
+     */
+    @Override
+    public void createFriendGroupSucc() {
+        Toast.makeText(FriendGroupManageActivity.this, getString(R.string.add_group_succ), Toast.LENGTH_SHORT).show();
+        FriendshipEvent.getInstance().OnAddFriendGroups(null);
+        groups.add(groupname);
+        adapter.notifyDataSetChanged();
+        FriendshipEvent.getInstance().OnAddFriendGroups(null);
+    }
+
+    /**
+     * 分组名不能为空
+     */
+    @Override
+    public void groupNameNotNull() {
+        Toast.makeText(FriendGroupManageActivity.this, getString(R.string.add_dialog_null), Toast.LENGTH_SHORT).show();
+    }
+
+    /**
+     * 删除组失败
+     */
+    @Override
+    public void delFriendGroupError() {
+        Toast.makeText(FriendGroupManageActivity.this, getString(R.string.get_member_group), Toast.LENGTH_SHORT).show();
+    }
+
+    /**
+     * 删除组成功
+     */
+    @Override
+    public void delFriendGroupSucc(int position) {
+        Toast.makeText(FriendGroupManageActivity.this, getString(R.string.del_group_succ), Toast.LENGTH_SHORT).show();
+        FriendshipEvent.getInstance().OnDelFriendGroups(Collections.singletonList(groups.get(position)));
+        groups.remove(position);
+        adapter.notifyDataSetChanged();
     }
 }

@@ -59,7 +59,7 @@
     <!--会话界面-->
     <string name="conversation_tab">会话</string>
     <string name="searchfriend">搜索朋友</string>
-    <string name="all_friend">所有朋友</string>
+    <string name="all_friend">所有好友</string>
     <string name="check_request">验证消息</string>
     <string name="public_group">公开群</string>
 
@@ -82,6 +82,8 @@
     <string name="no_del_name">默认分组不能删除</string>
     <string name="no_edit_name">默认分组不能编辑</string>
     <string name="get_member_group">获取分组失败</string>
+    <string name="edit_group_dialog_title">编辑分组</string>
+    <string name="edit_group_dialog_content">请输入不同的组名称</string>
 
     <!--分组编辑_组资料-->
     <string name="edit_group_name">组名称</string>

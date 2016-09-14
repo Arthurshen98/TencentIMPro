@@ -20,7 +20,7 @@ import cn.heren.com.impro.view.adapter.ExpandGroupListAdapter;
 /**
  * 所有朋友
  */
-public class ConnectActivity extends BaseActivity implements View.OnClickListener {
+public class ContactsActivity extends BaseActivity implements View.OnClickListener {
 
     private ImageView iv_conn_search;
     private TextView tv_conn_add;
@@ -31,7 +31,7 @@ public class ConnectActivity extends BaseActivity implements View.OnClickListene
     private ExpandableListView mGroupListView =null;
     @Override
     protected void loadActivityLayout() {
-        setContentView(R.layout.activity_connect);
+        setContentView(R.layout.activity_contacts);
         setTitleBarIsShow(false);
     }
 
@@ -63,7 +63,7 @@ public class ConnectActivity extends BaseActivity implements View.OnClickListene
         mGroupListView.setOnChildClickListener(new ExpandableListView.OnChildClickListener() {
             @Override
             public boolean onChildClick(ExpandableListView expandableListView, View view, int groupPosition, int childPosition, long l) {
-                friends.get(FriendshipInfo.getInstance().getGroups().get(groupPosition)).get(childPosition).onClick(ConnectActivity.this);
+                friends.get(FriendshipInfo.getInstance().getGroups().get(groupPosition)).get(childPosition).onClick(ContactsActivity.this);
                 return false;
             }
         });
