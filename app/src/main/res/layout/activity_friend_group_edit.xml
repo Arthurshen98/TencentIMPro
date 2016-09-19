@@ -90,8 +90,8 @@
         <TextView
             android:id="@+id/tv_no_mamber"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@color/background"
+            android:layout_height="match_parent"
+            android:background="@null"
             android:layout_marginTop="150dp"
             android:text="@string/fge_no_member"
             android:textSize="16sp"

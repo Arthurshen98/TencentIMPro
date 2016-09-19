@@ -212,6 +212,7 @@ public class ChatActivity extends BaseActivity implements ChatView, View.OnClick
     protected void onDestroy() {
         super.onDestroy();
         presenter.stop();
+        presenter.onDestroy();
     }
 
 

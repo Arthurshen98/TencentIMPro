@@ -124,4 +124,9 @@ public class SplashActivity extends BaseActivity implements SplashView {
                 super.onRequestPermissionsResult(requestCode, permissions, grantResults);
         }
     }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+    }
 }

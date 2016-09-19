@@ -32,7 +32,7 @@ public class ChooseFriendActivity extends BaseActivity implements View.OnClickLi
     private List<FriendProfile> selectList = new ArrayList<>();
     private List<String> mAlreadySelect = new ArrayList<>();
     private List<FriendProfile> alreadySelectList = new ArrayList<>();
-
+    private  ArrayList<String> result = null;
     @Override
     protected void loadActivityLayout() {
         setContentView(R.layout.activity_choose_friend);
@@ -105,7 +105,7 @@ public class ChooseFriendActivity extends BaseActivity implements View.OnClickLi
     }
 
     private ArrayList<String> getSelectIds(){
-        ArrayList<String> result = new ArrayList<>();
+        result = new ArrayList<>();
         for (FriendProfile item : selectList){
             result.add(item.getIdentify());
         }

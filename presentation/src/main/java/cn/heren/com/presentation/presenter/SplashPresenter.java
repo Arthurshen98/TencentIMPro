@@ -9,7 +9,7 @@ import cn.heren.com.presentation.viewinterface.SplashView;
  * 闪屏界面逻辑
  */
 public class SplashPresenter {
-    SplashView view;
+    private SplashView view;
     private static final String TAG = SplashPresenter.class.getSimpleName();
 
     public SplashPresenter(SplashView view) {
@@ -32,6 +32,7 @@ public class SplashPresenter {
             }
         }, 500);
     }
+
 
 
 }

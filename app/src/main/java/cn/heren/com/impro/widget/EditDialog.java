@@ -31,7 +31,7 @@ public class EditDialog extends Dialog {
     private void setCustomDialog() {
         View mView = LayoutInflater.from(getContext()).inflate(R.layout.layout_dialog_with_edittext, null);
         title1 = (TextView) mView.findViewById(R.id.title1);
-        title1 = (TextView) mView.findViewById(R.id.title2);
+        title2 = (TextView) mView.findViewById(R.id.title2);
         editText = (EditText) mView.findViewById(R.id.et_editDialog_content);
         positiveButton = (Button) mView.findViewById(R.id.btn_editDialog_sure);
         negativeButton = (Button) mView.findViewById(R.id.btn_editDialog_cancel);
@@ -47,7 +47,7 @@ public class EditDialog extends Dialog {
     }
 
     public View getTextContent() {
-        return title1;
+        return title2;
     }
 
     @Override

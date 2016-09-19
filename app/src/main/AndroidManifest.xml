@@ -91,7 +91,8 @@
         <activity android:name=".view.activity.SearchFriendActivity" />
         <activity android:name=".view.activity.FriendGroupManageActivity" />
         <activity android:name=".view.activity.FriendGroupEditActivity" />
-        <activity android:name=".view.activity.ChooseFriendActivity"></activity>
+        <activity android:name=".view.activity.ChooseFriendActivity" />
+        <activity android:name=".view.activity.AddFriendActivity"></activity>
     </application>
 
 </manifest>

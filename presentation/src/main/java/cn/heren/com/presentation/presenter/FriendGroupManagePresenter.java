@@ -43,7 +43,7 @@ public class FriendGroupManagePresenter {
                         }
                         @Override
                         public void onSuccess(List<TIMFriendResult> timFriendResults) {
-                            view.createFriendGroupSucc();
+                            view.createFriendGroupSucc(groupName);
                         }
                     });
                 }
@@ -56,24 +56,58 @@ public class FriendGroupManagePresenter {
     /**
      * 编辑群
      */
-
-    /**
-     * 删除群
-     */
-    public void delFriendGroup(List<String> groups, final int position) {
-        TIMFriendshipManager.getInstance().deleteFriendGroup(Collections.singletonList(groups.get(position)), new TIMCallBack() {
+    public void editFriendGroup(final String oldName, final String newName,final int position) {
+        handler.post(new Runnable() {
             @Override
-            public void onError(int i, String s) {
-                view.delFriendGroupError();
-            }
+            public void run() {
+                if (!TextUtils.isEmpty(newName)) {
+                    FriendshipManagerPresenter.changeFriendGroupName(oldName, newName, new TIMCallBack() {
+                        @Override
+                        public void onError(int i, String s) {
+                            view.editFriendGroupError(i);
+                        }
 
-            @Override
-            public void onSuccess() {
-                view.delFriendGroupSucc(position);
+                        @Override
+                        public void onSuccess() {
+                            view.editFriendGroupSucc(newName,position);
+                        }
+                    });
+                }else {
+                    view.groupNameNotNull();
+                }
+
             }
         });
     }
 
+    /**
+     * 删除群
+     */
+    public void delFriendGroup(final List<String> groups, final int position) {
+       handler.post(new Runnable() {
+           @Override
+           public void run() {
+               TIMFriendshipManager.getInstance().deleteFriendGroup(Collections.singletonList(groups.get(position)), new TIMCallBack() {
+                   @Override
+                   public void onError(int i, String s) {
+                       view.delFriendGroupError();
+                   }
 
+                   @Override
+                   public void onSuccess() {
+                       view.delFriendGroupSucc(position);
+                   }
+               });
+           }
+       });
+
+    }
+
+    /**
+     * 将presenter获取到Activity对象view = null，避免内存泄漏
+     */
+    public void onDestroy() {
+        view = null;
+    }
 }
 

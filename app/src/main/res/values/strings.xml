@@ -95,4 +95,9 @@
     <string name="get_member_fail">获取成员失败</string>
     <string name="add_member_fail">添加成员失败</string>
     <string name="add_member_succ">添加成员成功</string>
+
+    <!--添加好友-->
+    <string name="add_friend">添加好友</string>
+    <string name="add_phone_book">手机通讯录添加</string>
+    <string name="edit_phone_nick_add_fri">手机号、用户名</string>
 </resources>

@@ -180,4 +180,11 @@ public class ChatPresenter implements Observer {
 
     }
 
+    /**
+     * 将presenter获取到Activity对象view = null，避免内存泄漏
+     */
+    public void onDestroy() {
+        view = null;
+    }
+
 }
