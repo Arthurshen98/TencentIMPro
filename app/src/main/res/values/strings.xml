@@ -100,4 +100,11 @@
     <string name="add_friend">添加好友</string>
     <string name="add_phone_book">手机通讯录添加</string>
     <string name="edit_phone_nick_add_fri">手机号、用户名</string>
+    <string name="add_fri_user_error">搜索用户失败！</string>
+
+    <!--添加好友-->
+    <string name="phone_con_title">通讯录好友</string>
+    <string name="sms_invite">[医之家]强烈推荐，医之家APP重磅推出名医专家在线课程直播，与专家一起随时随地畅享学习乐趣！APP也能自动提醒你关注的课程，还等什么？赶快加入吧！http://www.yzjonline.com/</string>
+
+
 </resources>

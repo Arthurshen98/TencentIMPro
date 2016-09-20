@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:poplar="http://schemas.android.com/apk/res-auto"
+    tools:context="cn.heren.com.impro.view.activity.PhoneContactsActivity">
+    <ExpandableListView
+        android:id="@+id/lv_content"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" >
+    </ExpandableListView>
+
+    <cn.heren.com.impro.widget.FancyIndexer
+        android:id="@+id/bar"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        poplar:widthOffset="15dip"
+        poplar:minFontSize="32"
+        poplar:maxFontSize="60"
+        poplar:tipFontSize="72"
+        poplar:maxBezierHeight="150dip"
+        poplar:maxBezierWidth="180dip"
+        poplar:additionalTipOffset="40dip"
+        poplar:fontColor="#ffa0a0a0" />
+
+    <TextView
+        android:id="@+id/tv_index_center"
+        android:visibility="gone"
+        android:layout_width="160dp"
+        android:layout_height="100dp"
+        android:layout_centerInParent="true"
+        android:background="@drawable/bg_index"
+        android:textColor="#FFFFFF"
+        android:gravity="center"
+        android:textSize="36sp"
+        android:text="A" />
+</RelativeLayout>

@@ -24,7 +24,6 @@ public class ConversationActivity extends BaseActivity implements View.OnClickLi
     private ScrollView sv_conv;
     private LinearLayout ll_all_friend;
     private View view;
-    private ImageView iv_right;
 
     private ConversationAdapter adapter;
     private List datas = null;
@@ -43,8 +42,6 @@ public class ConversationActivity extends BaseActivity implements View.OnClickLi
         sv_conv = (ScrollView) findViewById(R.id.sv_conv);
         lv_conv = (ConversationListview) findViewById(R.id.lv_conv);
         ll_all_friend = (LinearLayout) findViewById(R.id.ll_all_friend);
-        view = LayoutInflater.from(this).inflate(R.layout.title_base, null);
-        iv_right = (ImageView) view.findViewById(R.id.iv_right);
     }
 
     @Override
